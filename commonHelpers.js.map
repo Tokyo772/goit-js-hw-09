@@ -1,0 +1,1 @@
+{"version":3,"file":"commonHelpers.js","sources":["../src/js/1-gallery.js"],"sourcesContent":["const a = 4;\nconsole.log(a);\n"],"names":["a"],"mappings":"wFAAA,MAAMA,EAAI,EACV,QAAQ,IAAIA,CAAC"}
