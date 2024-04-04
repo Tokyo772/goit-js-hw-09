@@ -69,8 +69,10 @@ const images = [
   },
 ];
 
-images.forEach(({ preview, original, description }) => {
-  list.innerHTML += `<li class="gallery-item">
+const itemsHtml = images
+  .map(
+    ({ preview, original, description }) =>
+      `<li class="gallery-item">
 	<a class="gallery-link" href="${original}">
 		<img
 			class="gallery-image"
@@ -78,8 +80,11 @@ images.forEach(({ preview, original, description }) => {
 			alt="${description}"
 			/>
 	</a>
-</li>`;
-});
+</li>`
+  )
+  .join('');
+
+list.innerHTML = itemsHtml;
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
