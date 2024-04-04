@@ -12,22 +12,27 @@ function loadForm() {
 
 loadForm();
 
-form.addEventListener('input', () => {
+const sendToLocalStorage = () => {
   const formData = {
     email: form.elements.email.value,
     message: form.elements.message.value,
   };
   localStorage.setItem(localStorageKey, JSON.stringify(formData));
-});
+};
+form.addEventListener('input', sendToLocalStorage);
 
-form.addEventListener('submit', event => {
+const submitForm = event => {
   event.preventDefault();
 
-  const savedData = localStorage.getItem(localStorageKey);
-  if (savedData) {
-    console.log('Submitted Data:', JSON.parse(savedData));
-  }
+  const formEmail = form.elements.email.value;
+  const formMessage = form.elements.message.value;
+  if (formEmail && formMessage) {
+    const savedData = localStorage.getItem(localStorageKey);
 
-  localStorage.removeItem(localStorageKey);
-  form.reset();
-});
+    console.log('Submitted Data:', JSON.parse(savedData));
+
+    localStorage.removeItem(localStorageKey);
+    form.reset();
+  }
+};
+form.addEventListener('submit', submitForm);
